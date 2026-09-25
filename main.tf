@@ -110,7 +110,7 @@ resource "aws_route_table_association" "private" {
 
 resource "aws_vpc_endpoint" "s3" {
   vpc_id            = aws_vpc.this.id
-  service_name      = "com.amazonaws.${data.aws_region.current.id}.s3"
+  service_name      = "com.amazonaws.${data.aws_region.current.region}.s3"
   vpc_endpoint_type = "Gateway"
   route_table_ids = concat(
     [aws_route_table.public.id],
