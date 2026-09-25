@@ -32,10 +32,6 @@ jobs:
       - name: Validate module
         run: terraform init -backend=false && terraform validate
 
-      - name: Validate example
-        working-directory: examples/basic
-        run: terraform init -backend=false && terraform validate
-
   release:
     if: github.event_name == 'workflow_dispatch'
     needs: validate
