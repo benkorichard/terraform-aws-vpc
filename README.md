@@ -8,7 +8,7 @@ An S3 gateway VPC endpoint is associated with every route table, so S3 API traff
 
 ```hcl
 module "vpc" {
-	source = "git::https://github.com/benkorichard/terraform-aws-vpc?ref=v0.1.0"
+	source = "git::https://github.com/benkorichard/terraform-aws-vpc"
 
     vpc_cidr = "10.0.0.0/16"
 	name     = "vpc-01"
