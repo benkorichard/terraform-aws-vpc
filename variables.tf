@@ -6,7 +6,6 @@ variable "name" {
 variable "vpc_cidr" {
   description = "CIDR block for the VPC."
   type        = string
-  default     = "10.0.0.0/16"
 }
 
 variable "public_subnet_cidrs" {
@@ -24,8 +23,8 @@ variable "private_subnet_cidrs" {
   type        = map(string)
 
   validation {
-    condition     = length(setsubtract(keys(var.private_subnet_cidrs), keys(var.public_subnet_cidrs))) == 0 && length(setsubtract(keys(var.public_subnet_cidrs), keys(var.private_subnet_cidrs))) == 0
-    error_message = "public_subnet_cidrs and private_subnet_cidrs must use the same availability zone keys."
+    condition     = length(setsubtract(keys(var.private_subnet_cidrs), keys(var.public_subnet_cidrs))) == 0
+    error_message = "Every private subnet availability zone must have a public subnet for its NAT gateway."
   }
 }
 
